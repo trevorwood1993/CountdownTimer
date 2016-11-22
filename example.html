@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>Countdown</title>
+</head>
+<body>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.shippingCountdownDiv{
+	border: 1px solid rgba(0,120,255,1);
+	border-width: 0px 0px 1px 0px;
+	background-color: rgba(0,120,255,.15);
+	width: 100%;
+}
+.shippingCountdownDiv h4{
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	padding: 0px 10px; margin: 0px;
+}
+
+.NewsletterSubscription input[type=submit]{
+	line-height: 35px;
+	padding: 0px 15px;
+	height: 35px;
+}
+
+
+
+</style>
+
+
+<div class="shippingCountdownDiv">
+	<h4>Next SAME DAY shipping cutoff time 4:00 PM CST:  
+		<span id="shipping_time">loading</span>
+	</h4>
+</div>
+<script type="text/javascript">
+function countDownTimer(){
+	// haven't tested with daylight savings time
+
+	var	hourToCountTo = 16, // military time
+			hourToCountToTimezone = -6; // -6 = CST
+
+	var d = new Date(),
+			d_offset = d.getTimezoneOffset()/60,
+			d_hours = d.getHours() + d_offset,
+			d_minutes = d.getMinutes(),
+			d_seconds = d.getSeconds(); 
+
+	var c_hours = d_hours + hourToCountToTimezone,
+			c_hours = hourToCountTo-c_hours-1,
+			c_minutes = 59-d_minutes,
+			c_seconds = 59-d_seconds;
+
+	if(c_hours < 0){
+		c_hours = c_hours+24; 
+		console.log("adding 24");
+	}
+
+	var foo = c_hours+" hrs "+c_minutes+" mins "+c_seconds+" secs";
+	document.getElementById("shipping_time").innerHTML = foo;
+}
+
+setInterval(function(){ 
+	countDownTimer();
+}, 1000);
+</script>
+
+
+
+
+
+</body>
+</html>
