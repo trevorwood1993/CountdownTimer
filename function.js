@@ -1,8 +1,8 @@
 function countDownTimer(){
 	// haven't tested with daylight savings time
 
-	var	hourToCountTo = 16, // military time
-		hourToCountToTimezone = -6; // -6 = CST
+	var hourToCountTo = 16, // military time
+	    hourToCountToTimezone = -6; // -6 = CST
 
 	var d = new Date(),
 	    d_offset = d.getTimezoneOffset()/60,
