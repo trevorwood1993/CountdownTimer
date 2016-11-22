@@ -16,8 +16,8 @@ function countDownTimer(){
 	    c_seconds = 59-d_seconds;
 
 	if(c_hours < 0){
-		c_hours = c_hours+24; 
-		console.log("adding 24");
+	    c_hours = c_hours+24; 
+	    console.log("adding 24");
 	}
 
 	var foo = c_hours+" hrs "+c_minutes+" mins "+c_seconds+" secs";
