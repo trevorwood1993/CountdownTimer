@@ -1,10 +1,49 @@
-function checkHoliday(a){
+<html>
+<head>
+	<title>Countdown</title>
+</head>
+<body>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style type="text/css">
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.shippingCountdownDiv{
+	border: 1px solid rgba(0,120,255,1);
+	border-width: 0px 0px 1px 0px;
+	background-color: rgba(0,120,255,.15);
+	width: 100%;
+}
+.shippingCountdownDiv h4{
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: center;
+	padding: 0px 10px; margin: 0px;
+}
+
+</style>
+
+
+<div class="shippingCountdownDiv">
+	<h4>Next SAME DAY shipping cutoff time 4:00 PM CST:  
+		<span id="shipping_time">loading</span>
+	</h4>
+</div>
+<script type="text/javascript">
+
+
+function checkHoliday(a,b){
 	// console.log('checkHoliday fire');
+	var	hourToCountTo = b;
 
 	var d = new Date(a),
 			d_year = d.getFullYear(),
 			d_month = d.getMonth()+1,
-			d_date = d.getDate();
+			d_date = d.getDate(),
+			d_hours = d.getHours();
 
 	var staticHolidays = [//month-day-year
 		"1-1",
@@ -25,27 +64,31 @@ function checkHoliday(a){
 
 	var shc = d_month+"-"+d_date,
 			hc = d_month+"-"+d_date+"-"+d_year;
-	if(staticHolidays.indexOf(shc) >= 0 || holidays.indexOf(hc) >= 0){
+
+			console.log(d_hours);
+			console.log(hourToCountTo);
+
+	if( d_hours < hourToCountTo && (staticHolidays.indexOf(shc) >= 0 || holidays.indexOf(hc) >= 0) ){
 		d = d.setDate(d.getDate() + 1);
-		// console.log("checkHoliday - adding 24");
-		return 24+checkHoliday(d);
+		console.log("checkHoliday - adding 24");
+		return 24+checkHoliday(d,hourToCountTo);
 	}
-	return checkSunday(d);
+	return checkSunday(d,hourToCountTo);
 	
 
 }
 
 
-function checkSunday(a){
+function checkSunday(a,b){
 	// console.log('checkSunday fire');
-	var	hourToCountTo = 16;
+	var	hourToCountTo = b;
 
 	var d = new Date(a),
 			d_hours = d.getHours(),
 			d_day = d.getDay();
 
 	if(d_day == 6 && d_hours >= hourToCountTo || d_day == 0 && d_hours <= hourToCountTo){
-		// console.log("checkSunday - adding 24");
+		console.log("checkSunday - adding 24");
 		return 24;
 	}
 	return 0;
@@ -88,7 +131,7 @@ function countDownTimer(){
 		c_hours = c_hours+24; 
 	}
 
-	c_hours = c_hours+checkHoliday(d);
+	c_hours = c_hours+checkHoliday(d,hourToCountTo);
 	
 	var foo = c_hours+" hrs "+c_minutes+" mins "+c_seconds+" secs";
 	document.getElementById("shipping_time").innerHTML = foo;
@@ -97,3 +140,11 @@ function countDownTimer(){
 setInterval(function(){ 
 	countDownTimer();
 }, 1000);
+</script>
+
+
+
+
+
+</body>
+</html>
