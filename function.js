@@ -1,40 +1,3 @@
-<html>
-<head>
-	<title>Countdown</title>
-</head>
-<body>
-
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<style type="text/css">
-*{
-	margin: 0px;
-	padding: 0px;
-}
-.shippingCountdownDiv{
-	border: 1px solid rgba(0,120,255,1);
-	border-width: 0px 0px 1px 0px;
-	background-color: rgba(0,120,255,.15);
-	width: 100%;
-}
-.shippingCountdownDiv h4{
-	font-family: 'Roboto', sans-serif;
-	font-size: 14px;
-	line-height: 30px;
-	text-align: center;
-	padding: 0px 10px; margin: 0px;
-}
-
-</style>
-
-
-<div class="shippingCountdownDiv">
-	<h4>Next SAME DAY shipping cutoff time 4:00 PM CST:  
-		<span id="shipping_time">loading</span>
-	</h4>
-</div>
-<script type="text/javascript">
-
-
 function checkHoliday(a,b){
 	// console.log('checkHoliday fire');
 	var	hourToCountTo = b;
@@ -140,11 +103,3 @@ function countDownTimer(){
 setInterval(function(){ 
 	countDownTimer();
 }, 1000);
-</script>
-
-
-
-
-
-</body>
-</html>
