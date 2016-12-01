@@ -8,7 +8,7 @@ function checkHoliday(d,hour,first){
 			d_date = d.getDate(),
 			d_hours = d.getHours();
 
-	var staticHolidays = [//month-day-year
+	var staticHolidays = [//month-day
 		"1-1",
 		"7-4",
 		"12-24",
