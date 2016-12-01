@@ -18,7 +18,6 @@ function checkHoliday(d,hour,first){
 	var holidays = [//month-day-year // 1-10-2016
 		//"11-29-2016","11-30-2016","12-1-2016","12-2-2016","12-3-2016",//testing purposes
 		//memorial day, labor day, thanksgiving
-		"11-24-2016",
 		"5-29-2017","9-4-2017","11-23-2017",
 		"5-28-2018","9-3-2018","11-22-2018",
 		"5-27-2019","9-2-2019","11-28-2019",
